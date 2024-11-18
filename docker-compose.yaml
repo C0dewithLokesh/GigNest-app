@@ -53,9 +53,9 @@ services:
     ports:
       # AMQP protocol ports
       - 5672:5672
-      # Management UI 
+      # Management UI
       - 15672:15672
-  
+
   elasticsearch:
     container_name: elasticsearch_container
     image: docker.elastic.co/elasticsearch/elasticsearch:8.16.0
@@ -82,7 +82,7 @@ services:
     restart: always
     environment:
       - ELASTICSEARCH_HOST=["http://elasticsearch_container:9200"]
-    ports: 
+    ports:
       - 5601:5601
     networks:
       - elastic
@@ -90,7 +90,6 @@ services:
       - ./kibana.yml/:/usr/share/kibana/config/kibana.yml:ro
     depends_on:
       - elasticsearch
-    
 
 networks:
   elastic:
